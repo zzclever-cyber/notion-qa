@@ -1,0 +1,66 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Data (runtime generated)
+data/faiss_index/
+data/kb_indexes/
+uploads/
+data/bm25_corpus.json
+data/eval_dataset.json
+data/eval_results.json
+data/*.db
+data/*.db-journal
+data/*.db-wal
+
+# Logs
+logs/
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Testing
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+benchmark_*.json
+
+# Docker
+.docker/
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Alembic — 迁移脚本纳入版本控制，仅忽略缓存
+alembic/versions/__pycache__/
+
+# 个人笔记 / 面试材料（默认不推到公开仓库，需要可自行取消忽略）
+对话总结.txt
+建议.txt
+项目完整流程-面试叙述.txt
+项目经历-简历.txt
+error.txt
+rq.txt

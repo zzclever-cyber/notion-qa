@@ -1,0 +1,64 @@
+{
+  "timestamp": "2026-06-30 20:22:57",
+  "summary": {
+    "total_samples": 6,
+    "success": 6,
+    "errors": 0,
+    "avg_faithfulness": 1.0,
+    "avg_recall_at_5": 1.0,
+    "hallucination_rate": 0.0,
+    "latency_p50": 17462,
+    "latency_p95": 31766
+  },
+  "by_type": {
+    "multi_hop": {
+      "count": 6,
+      "faithfulness": 1.0,
+      "recall_at_5": 1.0,
+      "hallucination_rate": 0.0,
+      "latency_p50": 17462
+    }
+  },
+  "worst_samples": [
+    {
+      "type": "multi_hop",
+      "faithfulness": 1.0,
+      "recall_at_5": 1.0,
+      "hallucination": false,
+      "latency_ms": 18050,
+      "query": "入职满3年的员工，如果想参加股权激励计划需要满足什么条件？年假有多少天？"
+    },
+    {
+      "type": "multi_hop",
+      "faithfulness": 1.0,
+      "recall_at_5": 1.0,
+      "hallucination": false,
+      "latency_ms": 16422,
+      "query": "如果一位入职2年的员工某月迟到了5次，他在当月的薪酬会受到什么影响？年假有多少天？"
+    },
+    {
+      "type": "multi_hop",
+      "faithfulness": 1.0,
+      "recall_at_5": 1.0,
+      "hallucination": false,
+      "latency_ms": 16150,
+      "query": "一名开发工程师出差到北京，可以享受什么住宿标准和交通标准？需要遵守什么代码规范？"
+    },
+    {
+      "type": "multi_hop",
+      "faithfulness": 1.0,
+      "recall_at_5": 1.0,
+      "hallucination": false,
+      "latency_ms": 17225,
+      "query": "专业版客户遇到P1级别故障时，SLA承诺的响应和恢复时间是多少？专业版年费多少？"
+    },
+    {
+      "type": "multi_hop",
+      "faithfulness": 1.0,
+      "recall_at_5": 1.0,
+      "hallucination": false,
+      "latency_ms": 31766,
+      "query": "合同金额在30万元的项目，需要经过哪些审批流程？项目管理中如果因个人原因导致延期会怎样？"
+    }
+  ]
+}

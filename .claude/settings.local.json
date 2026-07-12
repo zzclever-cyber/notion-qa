@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m pytest tests/test_fsm.py tests/test_retrieval.py tests/test_reflection.py -v --tb=short)",
+      "Bash(pip --version)",
+      "Read(//c/Users/123/AppData/Roaming/Claude/**)",
+      "Read(//c/Users/123/AppData/Local/AnthropicClaude/**)",
+      "Bash(docker --version)",
+      "Bash(docker compose *)",
+      "Bash(pip install *)",
+      "Bash(netstat -ano)",
+      "Bash(uv run *)",
+      "Read(//c/Users/123/anaconda3/**)",
+      "Read(//c/Python312/**)",
+      "Bash(where python3 *)",
+      "Bash(curl *)",
+      "Bash(awk '{print $5}')",
+      "Bash(xargs -I {} taskkill //PID {} //F)",
+      "Bash(F:/ai job/RAG Agent/.venv/Scripts/python.exe *)",
+      "Bash(ls processing/)",
+      "Bash(ls frontend/)",
+      "Bash(./.venv/Scripts/python.exe -c ' *)",
+      "Bash(PYTHONPATH=.venv/Lib/site-packages python -c ' *)",
+      "Bash(PYTHONPATH=\".venv/Lib/site-packages\" python -m alembic upgrade head)",
+      "Bash(PYTHONUTF8=1 PYTHONPATH=\".venv/Lib/site-packages\" python -m alembic upgrade head)",
+      "Bash(PYTHONUTF8=1 PYTHONPATH=.venv/Lib/site-packages python -c ' *)",
+      "Bash(./.venv/Scripts/python.exe --version)",
+      "Bash(./.venv/Scripts/python.exe -c \"import sys; print\\('venv ok:', sys.prefix\\)\")",
+      "Bash(./.venv/Scripts/python.exe -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pyjwt bcrypt pymupdf python-docx)",
+      "Bash(./.venv/Scripts/python.exe -c \"import torch; print\\('torch', torch.__version__\\)\")",
+      "Bash(PYTHONUTF8=1 PYTHONIOENCODING=utf-8 ./.venv/Scripts/python.exe -X utf8 _prove_pipeline.py)",
+      "Bash(./.venv/Scripts/python.exe -m uvicorn main:app --host 127.0.0.1 --port 8000 --log-level warning)"
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# 数据（运行时挂载或重建）
+data/faiss_index/
+data/kb_indexes/
+uploads/
+data/bm25_corpus.json
+data/eval_dataset.json
+data/eval_results.json
+
+# 前端（独立部署到 Vercel，不进后端镜像）
+frontend/
+node_modules/
+
+# 日志
+logs/
+
+# 环境
+.env
+.env.local
+
+# 测试
+.pytest_cache/
+htmlcov/
+.coverage
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 文档
+*.md
+!README.md
