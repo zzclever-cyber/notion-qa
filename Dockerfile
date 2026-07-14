@@ -10,9 +10,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc g++ libffi-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# 安装 Python 依赖（利用 Docker 层缓存）
+# 安装 Python 依赖（全局安装，多阶段构建兼容）
 COPY requirements.txt .
-RUN pip install --no-cache-dir --user -r requirements.txt
+RUN pip install --no-cache-dir --target=/install -r requirements.txt
 
 # ============================================================
 # 运行阶段
@@ -26,14 +26,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libgomp1 \
     && rm -rf /var/lib/apt/lists/*
 
-# 从 builder 复制已安装的包
-COPY --from=builder /root/.local /root/.local
-ENV PATH=/root/.local/bin:$PATH
+# 从 builder 复制已安装的包（全局目录，app 用户可读）
+COPY --from=builder /install /usr/local/lib/python3.11/site-packages
 
 # 复制应用代码
 COPY . .
 
-# 创建非 root 用户
+# 创建非 root 用户（后于 COPY，保证文件归属正确）
 RUN useradd --create-home --shell /bin/bash app && chown -R app:app /app
 USER app
 
