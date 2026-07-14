@@ -327,8 +327,8 @@ class LLMGenerator:
         """
         Token-level SSE 流式生成
 
-        使用 LangChain ChatOpenAI 的 .stream() 方法实现真正的逐 token 输出
-        经过熔断器检查（注意：流式模式下重试不适用，由调用方处理）
+        使用 LangChain ChatOpenAI 的 .stream() 方法实现真正的逐 token 输出。
+        流式不触发熔断器 —— 流式失败通常是瞬时网络波动，直接重试即可，不应阻断后续请求。
         """
         prompt = REASON_PROMPT.format(
             context=context,
@@ -342,15 +342,6 @@ class LLMGenerator:
             HumanMessage(content=prompt),
         ]
 
-        # 熔断器检查
-        try:
-            llm_circuit_breaker._before_request()
-        except CircuitBreakerOpenError:
-            log.error("[LLM] 熔断器已打开，拒绝流式 LLM 调用")
-            self._metrics.record_llm_error()
-            yield "data: [ERROR] 服务暂时不可用，请稍后重试\n\n"
-            return
-
         try:
             for chunk in self.llm.stream(messages):
                 if chunk.content:
@@ -358,9 +349,9 @@ class LLMGenerator:
             llm_circuit_breaker._on_success()
             self._metrics.record_llm_call()
         except Exception as e:
-            llm_circuit_breaker._on_failure()
+            # 流式失败不触发熔断（不调 _on_failure），仅记录指标 + 返回友好提示
             self._metrics.record_llm_error()
-            log.error(f"[LLM] 流式生成失败: {e}")
+            log.warning(f"[LLM] 流式生成中断: {e}")
             yield "\n\n[生成中断，请重试]"
 
     # ============================================================
