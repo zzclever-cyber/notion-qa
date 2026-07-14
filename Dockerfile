@@ -44,4 +44,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=90s --retries=3 \
 EXPOSE 8000
 
 # Railway 等平台通过 $PORT 注入端口；本地默认 8000。用 shell 形式让 ${PORT} 展开
-CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
